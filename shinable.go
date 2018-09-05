@@ -1,5 +1,5 @@
 package shinable
 
 func IsItShiny(s string) bool {
-	return "Shiny" == s
+	return "Shiny" == s || "shiny" == s
 }
