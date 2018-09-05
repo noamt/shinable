@@ -1,5 +1,5 @@
 package shinable
 
-func IsItShiny(s string) bool {
+func IsIt(s string) bool {
 	return "Shiny" == s || "shiny" == s
 }
