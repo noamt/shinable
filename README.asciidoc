@@ -1,0 +1,35 @@
+## One
+Simple module initialized with
+```
+export GO111MODULE=on
+go mod init
+```
+This creates a go mod file.
+After pushing to github we can create a consumer module.
+[consumer.go]
+```
+package main
+
+import "github.com/youruser/shinable"
+
+func main() {
+    println("Is it shiny?", shinable.Shinable("Shiny"))
+}
+```
+Init it as a module as well with `go mod init consumer`.
+Then build and pull deps with `go build`.
+
+Notice that module is locally annotated with an "anonymous" version.
+
+## Two
+Update shinable with new code and push it.
+Consumer won't get the new version until you run `go get -u`
+
+Can also push shinable with tag `v1.0.0`. Notice the importance of `v` prefix and reupdate.
+
+## Three
+API has been broken and has been pushed as version `v2.0.0`
+Updating the consumer still won't break, but can be updated with
+```
+import "github.com/youruser/shinable/v2"
+```
